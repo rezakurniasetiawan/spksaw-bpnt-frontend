@@ -88,6 +88,7 @@ class Alternatif extends CI_Controller
         );
 
         $this->Alternatif_model->tambah_aksi($data, 'alternatif');
+        $this->session->set_flashdata('success', 'Data Berhasil Ditambahkan');
         redirect('alternatif');
     }
 
@@ -95,6 +96,7 @@ class Alternatif extends CI_Controller
     {
         $where = array('No' => $no);
         $this->Alternatif_model->hapus_data($where, 'alternatif');
+        $this->session->set_flashdata('success', 'Data Berhasil Dihapus');
         redirect('alternatif/index');
     }
 
@@ -165,7 +167,6 @@ class Alternatif extends CI_Controller
             'no' => $no
         );
         $this->Alternatif_model->update_data($where, $data, 'alternatif');
-        // tambahkan sweet alert success
         $this->session->set_flashdata('success', 'Data Berhasil Diubah');
         redirect('alternatif');
     }

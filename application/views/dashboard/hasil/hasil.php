@@ -99,15 +99,15 @@
                 <?php foreach ($ranking as $item) : ?>
                     <?php $data = $item['data']; ?>
                     <tr>
-                        <td><?= 'A' . $item['no'] ?></td> <!-- Menampilkan nomor alternatif asli -->
+                        <td><?= 'A' . $item['no'] ?></td> 
                         <td><?= $alternatif[$item['no'] - 1]->nama ?></td>
                         <td><?= isset($data[1]) ? $data[1] : '' ?></td>
                         <td><?= isset($data[2]) ? $data[2] : '' ?></td>
                         <td><?= isset($data[3]) ? $data[3] : '' ?></td>
                         <td><?= isset($data[4]) ? $data[4] : '' ?></td>
                         <td><?= isset($data[5]) ? $data[5] : '' ?></td>
-                        <td><?= isset($data[0]) ? $data[0] : '' ?></td> <!-- Nilai akhir preferensi -->
-                        <td><?= $rank++ ?></td> <!-- Rangking -->
+                        <td><?= isset($data[0]) ? $data[0] : '' ?></td>
+                        <td><?= $rank++ ?></td>
                     </tr>
                 <?php endforeach ?>
             </tbody>

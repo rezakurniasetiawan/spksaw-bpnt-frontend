@@ -10,9 +10,20 @@
     <link rel="stylesheet" href="<?= base_url('assets/') ?>css/ready.css">
     <link rel="stylesheet" href="<?= base_url('assets/') ?>css/demo.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
+    <!-- success -->
+    <?php if ($this->session->flashdata('success')) : ?>
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: '<?php echo $this->session->flashdata('success'); ?>',
+            });
+        </script>
+    <?php endif; ?>
     <div class="wrapper">
         <div class="main-header">
             <div class="logo-header">

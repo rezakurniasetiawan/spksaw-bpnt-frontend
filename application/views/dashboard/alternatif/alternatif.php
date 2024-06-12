@@ -34,7 +34,7 @@
                                 <td><?= $ssw->name_c5 ?></td>
                                 <td>
                                     <a href="<?= base_url('alternatif/update/' . $ssw->no) ?>" class="btn btn-primary btn-sm"><i class="la la-edit"></i> Edit</a>
-                                    <a href="<?= base_url('alternatif/delete/' . $ssw->no) ?>" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Ini?')"><i class="la la-trash"></i> Delete</a>
+                                    <a href="<?= base_url('alternatif/delete/' . $ssw->no) ?>" class="btn btn-danger btn-sm delete-btn" data-confirm="Apakah Anda Yakin Ingin Menghapus Data Ini?"><i class="la la-trash"></i> Delete</a>
                                 </td>
                             </tr>
                         <?php endforeach ?>
