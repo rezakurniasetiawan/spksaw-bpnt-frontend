@@ -19,26 +19,27 @@ Metode Simple Additive Weighting (SAW), juga dikenal sebagai metode penjumlahan 
 ## Instalasi
 
 Untuk menjalankan aplikasi ini, ikuti langkah-langkah berikut:
+1. Clone repositori ini ke dalam direktori web server Anda.
+   ```bash
+   git clone https://github.com/rezakurniasetiawan/spksaw-bpnt-ci.git
 
-### 1. Buat database baru di MySQL.
+2. Buat database baru di MySQL.
 
-### 2. Impor skema database dari file `database.sql` ke dalam database yang baru dibuat.
+3. Impor skema database dari file `database.sql` ke dalam database yang baru dibuat.
 
-### 3. Konfigurasi CodeIgniter:
+4. Konfigurasi CodeIgniter:
 
 Buka file `application/config/database.php`.
 
 Sesuaikan pengaturan koneksi database dengan informasi database Anda.
 
-### 4. Jalankan Aplikasi:
+5. Jalankan Aplikasi:
 
 Buka aplikasi melalui web browser Anda.
 
-Untuk akses sebagai administrator, gunakan URL: [http://localhost/spksaw-bpnt-ci/admin](http://localhost/spksaw-bpnt-ci/admin).
-
-Untuk akses sebagai pengguna, gunakan URL: [http://localhost/spksaw-bpnt-ci/user](http://localhost/spksaw-bpnt-ci/user).
+Untuk akses web, gunakan URL: [http://localhost/spksaw-bpnt-ci/admin](http://localhost/spksaw-bpnt-frontend/).
 
 
 ## Lisensi
 
-Proyek ini dilisensikan di bawah [Nama Lisensi]. Lihat `LICENSE` untuk informasi lebih lanjut.
+Proyek ini dilisensikan di bawah [Nisa] Developemnt by [Reza Kurnia]. Lihat `LICENSE` untuk informasi lebih lanjut.
