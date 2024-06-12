@@ -133,3 +133,4 @@ $autoload['language'] = array();
 |	$autoload['model'] = array('first_model' => 'first');
 */
 $autoload['model'] = array('Kriteria_model', 'Alternatif_model', 'Hasil_model', 'Login_model');
+$autoload['helper'] = array('url', 'navigation');

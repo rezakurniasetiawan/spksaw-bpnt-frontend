@@ -4,18 +4,22 @@
     
     class Login_model extends CI_Model {
 		
-		function logged_id()
-		{
-			return $this->session->userdata('id_user');
-		}
-		
-        public function login($username, $passwordx)
+        public function cek_login($table, $where)
         {
-            $this->db->select('*');
-            $this->db->from('user');
-            $this->db->where('username', $username);
-            $this->db->where('pass', $pass);
-            return $this->db->get()->row();
+            return $this->db->get_where($table, $where);
+        }
+
+        public function isLogin()
+        {
+            if ($this->session->userdata('status') != "login") {
+                $this->session->set_flashdata('error', 'Anda harus login terlebih dahulu!');
+                redirect('login');
+            }
+        }
+
+        public function logged_name()
+        {
+            return $this->session->userdata('name');
         }
     
     }

@@ -1,63 +1,71 @@
 <?php
 
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Login extends CI_Controller {
+class Login extends CI_Controller
+{
     public function __construct()
     {
         parent::__construct();
         $this->load->library('session');
-        $this->load->model('Login_model');
-        $this->load->model('User_model');
     }
     public function index()
     {
-        if($this->Login_model->logged_id())
-		{
-			redirect('Login/home');
-		}else{
-		$this->load->view('login');
-		}
+        // if($this->Login_model->logged_id())
+        // {
+        // 	redirect('Login/home');
+        // }else{
+        // }
+        $this->load->view('auth/login');
     }
 
-    public function login()
+    public function LoginController()
     {
-        $username = $this->input->post('username');
+        $email = $this->input->post('email');
         $password = $this->input->post('password');
-        $passwordx = md5($password);
-        $set = $this->Login_model->login($username, $passwordx);
-        if($set)
-        { 
-            $log = [
-                'id_user' => $set->id_user,
-                'username' => $set->username,
-                'id_user_level' => $set->id_user_level,
-                'status' => 'Logged'
-            ];
-            $this->session->set_userdata($log);            
-            redirect('Login/home');
-          
-        }
-        else
-        {
-            $this->session->set_flashdata('message', 'Username atau Password Salah');
+        $where = array(
+            'email' => $email,
+            'password' => md5($password)
+        );
+        $cek = $this->Login_model->cek_login("user", $where)->num_rows();
+        if ($cek > 0) {
+            $data_session = array(
+                'nama' => $email,
+                'status' => "login"
+            );
+
+            // get data where email
+            $data = $this->db->get_where('user', ['email' => $email])->row_array();
+            // masukkan ke session
+            $this->session->set_userdata('email', $data['email']);
+            $this->session->set_userdata('name', $data['name']);
+            $this->session->set_userdata('id', $data['id']);
+
+            $this->session->set_userdata($data_session);
+
+            $this->session->set_flashdata('success', 'Login Berhasil');
+            redirect('dashboard');
+        } else {
+            $this->session->set_flashdata('error', 'Username dan password salah!');
             redirect('login');
         }
-        
     }
 
+    // buatkan md5 "password"
+
     public function logout()
-    { 
+    {
         $this->session->sess_destroy();
         redirect('login');
     }
 
+
+
     public function home()
-    { 
+    {
         $data['page'] = "Dashboard";
-		$this->load->view('admin/index', $data);
+        $this->load->view('admin/index', $data);
     }
 }
 
 /* End of file Login.php */
-?>
